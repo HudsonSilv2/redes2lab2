@@ -1,0 +1,23 @@
+services:
+
+  server:
+    build:
+      context: ./server
+
+    container_name: serialization-server
+
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - ./data:/app/data
+
+
+  client:
+    build:
+      context: ./client
+
+    container_name: serialization-client
+
+    depends_on:
+      - server
